@@ -11,13 +11,13 @@ and `cd client` to run `npm i` and install dependencies there too.
 
 To start the node server run `npm run dev` from the root folder.   
 To start react, run `npm start` from `client` folder and the page will display on localhost:3000.
- 
+
 
 
 
 
 *Learning & Resources*:
 
-https://www.valentinog.com/blog/socket-io-node-js-react/
+https://www.valentinog.com/blog/socket-io-node-js-react/  
 Coindesk API: https://www.coindesk.com/api/
 
