@@ -21,7 +21,7 @@ io.on('connection', socket => {
   } else {
     interval = setInterval(()=>{
       getAPIandEmit(socket)
-    }, 20000)
+    }, 10000)
   }
   socket.on("disconnect", () => console.log("Client disconnected"));
 })
