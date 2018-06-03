@@ -14,15 +14,14 @@ const server = http.createServer(app)
 const io = socketIo(server)
 
 let interval 
-
 io.on('connection', socket => {
   console.log('client connected')
   if(interval){
     clearInterval(interval)
   } else {
     interval = setInterval(()=>{
-      getAPIandEmit()
-    }, 60000)
+      getAPIandEmit(socket)
+    }, 20000)
   }
   socket.on("disconnect", () => console.log("Client disconnected"));
 })
@@ -30,14 +29,14 @@ io.on('connection', socket => {
 const getAPIandEmit = async socket => {
  const res = {}
  try{
-  const data = await fetch(url).then(blob => blob.json()).then(data => data)
+  const data = await fetch(url).then(blob => blob.json()).then(data =>{
   res.time = data.time.updateduk
   res.currency = data.chartName
   res.rate = data.bpi.GBP.rate
-  console.log(res)
   socket.emit('myData', res)
+  })
  } catch(error){
-   console.error(error.code)
+   console.error("error: ", error.code)
  }
 }
 
